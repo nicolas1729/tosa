@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        test
+        
+        <script type="text/javascript">
+
+            input = [
+                "10 8",
+                "2 9"
+            ];
+
+            main(input);
+
+            function main(input){
+                
+                let [nb, ...data] = input;
+                let grid = init(data);
+                let result = convert(grid);
+
+                console.log(resp);
+            }
+
+
+            function convert(grid){
+                let result = [];
+                for (let y = 0; y<grid.length; y++){
+                    for (let x = 0; x<grid[y].length; x++){
+                        let noeud = grid[y][x];
+                        result.push(noeud);
+                    }
+                }
+
+                return result;
+            }
+
+            function init(data){
+                grid = [];
+                data.forEach((elt,idx) => {
+                    let [un, deux] = elt.split(" ");
+                    let obj = {key:parseInt(un), value:parseInt(deux)}
+                    grid.push(obj);
+                    //grid.push(elt.split(" "));
+                });
+
+                grid.sort((a,b)=>{
+                    if(a.key === b.key){
+                        return a.value - b.value;
+                    }
+                    return a.key-b.key;
+                });
+                return grid;
+            }
+
+
+        </script>
+    </body>
+</html>
